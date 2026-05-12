@@ -37,4 +37,21 @@ public class Tablero{
         }
         return false;
     }
+
+    public bool VerificarEmpate(){
+        int cont = 0;
+
+        for(int i = 0; i<9; i++){
+            if (Casillas[i] != ""){
+                cont++;
+            }
+        }
+
+        if (cont == 9){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
