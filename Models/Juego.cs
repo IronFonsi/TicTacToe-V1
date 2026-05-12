@@ -16,6 +16,9 @@ public class Juego{
     public bool HayGanador(){
         return Tablero.VerificarGanador(JugadorActual.Simbolo);
     }
+    public bool HayEmpate(){
+        return Tablero.VerificarEmpate();
+    }
     public void CambiarTurno(){
         if (JugadorActual == Jugador1)
         JugadorActual = Jugador2;

@@ -31,9 +31,13 @@ public partial class MainWindow : Window
 
         boton.Content = juego.JugadorActual.Simbolo;
 
-        if (juego.HayGanador())
-        {
+        if (juego.HayGanador()){
             MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
+            DesactivarBotones();
+            return;
+        }
+        else if (juego.HayEmpate()){
+            MessageBox.Show("El juego terminó en un empate");
             DesactivarBotones();
             return;
         }
