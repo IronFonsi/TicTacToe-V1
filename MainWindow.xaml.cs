@@ -15,6 +15,19 @@ public partial class MainWindow : Window
         juego = new Juego();
     }
 
+private void ReiniciarJuego(){
+    juego = new Juego();
+
+    Button[] botones = { B0, B1, B2, B3, B4, B5, B6, B7, B8 };
+
+    foreach (Button boton in botones)
+    {
+        boton.Content = "";     
+        boton.IsEnabled = true; 
+    }
+}
+
+
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         Button boton = sender as Button;
@@ -33,11 +46,13 @@ public partial class MainWindow : Window
         if (juego.HayGanador()){
             MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
             DesactivarBotones();
+            ReiniciarJuego();
             return;
         }
         else if (juego.HayEmpate()){
             MessageBox.Show("El juego terminó en un empate");
             DesactivarBotones();
+            ReiniciarJuego();
             return;
         }
 
