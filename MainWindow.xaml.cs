@@ -15,18 +15,53 @@ public partial class MainWindow : Window
         juego = new Juego();
     }
 
-private void ReiniciarJuego(){
-    juego = new Juego();
+    private void ReiniciarJuego(){
+        juego = new Juego();
 
-    Button[] botones = { B0, B1, B2, B3, B4, B5, B6, B7, B8 };
+        Button[] botones = { B0, B1, B2, B3, B4, B5, B6, B7, B8 };
 
-    foreach (Button boton in botones)
-    {
-        boton.Content = "";     
-        boton.IsEnabled = true; 
-    }
+        foreach (Button boton in botones)
+        {
+            boton.Content = "";     
+            boton.IsEnabled = true; 
+        }
+
+        juego.JugadorActual = juego.Jugador1;
 }
 
+    private void IA(){
+        string simbolo_IA = juego.JugadorActual.Simbolo;
+        Button[] botones = { B0, B1, B2, B3, B4, B5, B6, B7, B8 };
+        Random random = new Random();
+        int randomNumber = random.Next(9);
+        bool Jugado = false;
+
+        do{
+            if(botones[randomNumber].Content == "X" || botones[randomNumber].Content == "O"){
+                randomNumber = random.Next(9); 
+            }
+            else{
+                Jugado = true;
+            } 
+        }while(Jugado == false);
+
+/*
+        for (int i = 0; i<9000; i++)
+        {
+            if(botones[randomNumber].Content != "")
+            {
+                randomNumber = random.Next(9);
+            }
+            else
+            {
+                break;
+            }
+        }
+*/
+        juego.Jugar(randomNumber);
+
+        botones[randomNumber].Content = simbolo_IA;
+    }
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
@@ -57,6 +92,19 @@ private void ReiniciarJuego(){
         }
 
         juego.CambiarTurno();
+        
+        if (juego.JugadorActual == juego.Jugador2){
+            IA();
+
+            if (juego.HayGanador()){
+                MessageBox.Show($"{juego.JugadorActual.Nombre} ganó");
+                DesactivarBotones();
+                ReiniciarJuego();
+                return;
+            }
+
+            juego.CambiarTurno();
+        }
     }
 
     private void DesactivarBotones(){
