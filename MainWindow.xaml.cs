@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.Contracts;
+using System.Windows;
 using System.Windows.Controls;
 using TicTacToe.Models;
 
@@ -7,7 +8,6 @@ namespace TicTacToe;
 public partial class MainWindow : Window
 {
     Juego juego;
-
     public MainWindow()
     {
         InitializeComponent();
@@ -18,7 +18,6 @@ public partial class MainWindow : Window
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         Button boton = sender as Button;
-
         int posicion = int.Parse(boton.Name.Replace("B", ""));
 
         bool movimientoValido = juego.Jugar(posicion);
@@ -45,8 +44,7 @@ public partial class MainWindow : Window
         juego.CambiarTurno();
     }
 
-    private void DesactivarBotones()
-    {
+    private void DesactivarBotones(){
         B0.IsEnabled = false;
         B1.IsEnabled = false;
         B2.IsEnabled = false;
