@@ -1,0 +1,11 @@
+- ¿Dónde podría existir polimorfismo?
+En los jugadores
+
+- ¿Necesitan herencia?
+Si, para tener los mismos comportamientos
+
+- ¿Qué pasaría si agregamos IA?
+Utilizaría los mismos comportamientos pero de manera automatica
+
+- ¿La UI debería saber toda la lógica?
+No, no la debe saber, solo debe mostrar los cambios que se llevan a cabo detrás
