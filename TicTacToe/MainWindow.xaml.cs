@@ -45,21 +45,7 @@ public partial class MainWindow : Window
             } 
         }while(Jugado == false);
 
-/*
-        for (int i = 0; i<9000; i++)
-        {
-            if(botones[randomNumber].Content != "")
-            {
-                randomNumber = random.Next(9);
-            }
-            else
-            {
-                break;
-            }
-        }
-*/
         juego.Jugar(randomNumber);
-
         botones[randomNumber].Content = simbolo_IA;
     }
 
